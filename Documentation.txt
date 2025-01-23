@@ -1,0 +1,130 @@
+Name: Goutham M
+Date: 22-10-2024
+Project name: LSB image steganography
+
+-->Encoding
+->When optional name is given
+Input: ./a.out -e beautiful.bmp secret.txt
+Output: INFO: Output File not mentioned. Creating steged_img.bmp as default
+INFO: Opening required files 
+INFO: Opened beautiful.bmp 
+INFO: Opened secret.txt 
+INFO: Opened steged_img.bmp 
+INFO: Done 
+INFO: ## Encoding Procedure Started ## 
+INFO: Checking for secret.txt size 
+INFO: Done. Not Empty 
+INFO: Checking for beautiful.bmp capacity to handle secret.txt 
+INFO: Done. Found OK 
+INFO: Copying image header 
+INFO: Done 
+INFO: Encoding Magic String Signature 
+INFO: Done 
+INFO: Encoding secret.txt File Extension size 
+INFO: Done 
+INFO: Encoding secret.txt File Extension 
+INFO: Done 
+INFO: Encoding secret.txt File Size 
+INFO: Done 
+INFO: Encoding secret.txt File Data 
+INFO: Done 
+INFO: Copying Left Over Data 
+INFO: Done 
+INFO: ## Encoding Done Successfully ##
+
+->When the optional name is given
+Input: ./a.out -e beautiful.bmp secret.txt encoded.bmp
+Output: INFO: Opening required files 
+INFO: Opened beautiful.bmp 
+INFO: Opened secret.txt 
+INFO: Opened encoded.bmp 
+INFO: Done 
+INFO: ## Encoding Procedure Started ## 
+INFO: Checking for secret.txt size 
+INFO: Done. Not Empty 
+INFO: Checking for beautiful.bmp capacity to handle secret.txt 
+INFO: Done. Found OK 
+INFO: Copying image header 
+INFO: Done 
+INFO: Encoding Magic String Signature 
+INFO: Done 
+INFO: Encoding secret.txt File Extension size 
+INFO: Done 
+INFO: Encoding secret.txt File Extension 
+INFO: Done 
+INFO: Encoding secret.txt File Size 
+INFO: Done 
+INFO: Encoding secret.txt File Data 
+INFO: Done 
+INFO: Copying Left Over Data 
+INFO: Done 
+INFO: ## Encoding Done Successfully ##
+
+-->Decoding
+->When optional name is not given
+Input: ./a.out -d steged_img.bmp
+Output: INFO: ## Decoding Procedure Started ##
+INFO: Opening required files 
+INFO: Opened steged_img.bmp 
+INFO: Decoding Magic String Signature 
+#*
+INFO: Done 
+INFO: Decoding Output File Extension 
+INFO: Done 
+INFO: Output File not mentioned. Creating decoded.txt as default
+INFO: Opened decoded.txt
+INFO: Done. Opened all required files
+INFO: Decoding decoded.txt File Size 
+INFO: Done 
+INFO: Decoding decoded.txt File Data 
+INFO: Done 
+## Decoding Done Successfully ##
+
+->When optional name is given
+Input: ./a.out -d steged_img.bmp my_secret
+Output: INFO: ## Decoding Procedure Started ##
+INFO: Opening required files 
+INFO: Opened steged_img.bmp 
+INFO: Decoding Magic String Signature 
+#*
+INFO: Done 
+INFO: Decoding Output File Extension 
+INFO: Done 
+INFO: Opened my_secret.txt
+INFO: Done. Opened all required files
+INFO: Decoding my_secret.txt File Size 
+INFO: Done 
+INFO: Decoding my_secret.txt File Data 
+INFO: Done 
+## Decoding Done Successfully ##
+
+validations: ./a.out
+./a.out: Encoding: ./a.out -e <.bmp file> <.txt file> [output file]
+./a.out: Decoding: ./a.out -d <.bmp file> [output file]
+:~/stegonography_project/4-SkeletonCode$
+
+./a.out -e beautiful
+./a.out: Encoding: ./a.out -e <.bmp file> <.txt file> [output file]
+:~/stegonography_project/4-SkeletonCode$
+
+./a.out -e beautiful.bmp secret
+INFO: secret no extension mentioned!
+:~/stegonography_project/4-SkeletonCode$
+
+./a.out -d
+./a.out: Decoding: ./a.out -d <.bmp file> [output file]
+:~/stegonography_project/4-SkeletonCode$
+
+./a.out -d steged_img
+INFO: steged_img is not a .bmp file!
+INFO: ## Decoding Procedure Started ##
+INFO: Opening required files 
+fopen: No such file or directory
+ERROR: Unable to open file steged_img
+:~/stegonography_project/4-SkeletonCode$
+
+./a.out -f steged_img.bmp
+Invalid operation!
+Give -e for encoding or -d for decoding
+:~/stegonography_project/4-SkeletonCode$
+
